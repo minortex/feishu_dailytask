@@ -37,19 +37,19 @@ function unlock(password) {
         for (var i = 0; i < password.length; i++) {
             // 使用 password.charAt(i) 来获取当前循环的数字
             var digit = password.charAt(i);
-            
+
             console.log(`正在点击数字: ${digit}`);
-            
+
             // 使用 var 替代 let
             var keyButton = desc(digit).findOne(1000);
-            
+
             if (keyButton) {
                 keyButton.click();
             } else {
                 console.error(`错误：未能找到数字 "${digit}" 的按钮！`);
                 return; // 停止操作
             }
-            
+
             // 增加延迟，让操作更稳定
             sleep(150);
         }
