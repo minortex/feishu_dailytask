@@ -33,9 +33,31 @@ if (!screenStatus) {
 }
 
 // 启动活动
-console.log("启动飞书对应活动...");
-app.launch("com.ss.android.lark");
-shizuku(`su -c 'am start -n "com.ss.android.lark/.threaddetail.ThreadDetailActivity" --es "key_params_thread_source" "这里是每日签到" --es "key_params_thread_id" ${thread} --ez "key_params_show_chat_name" "true" --ez "key_params_load_from_start" "true" --ez "key_params_show_keyboard" "true" --ez "key_params_has_create_thread" "true" --ei "key_params_jump_position" "0" --ez "key_bottom_sheet_container_start" "false"'`)
+try {
+    console.log("启动飞书对应活动...");
+    app.startActivity({
+        action: "android.intent.action.VIEW",
+        packageName: "com.ss.android.lark",
+        className: "com.ss.android.lark.threaddetail.ThreadDetailActivity",
+        // 关键：因为该组件未导出，必须使用 root 模式
+        root: true,
+        extras: {
+            "key_params_thread_id": thread,
+            "key_params_thread_source": messageText,
+            "key_params_show_chat_name": true,
+            "key_params_load_from_start": true,
+            "key_params_show_keyboard": true,
+            "key_params_has_create_thread": true,
+            "key_params_jump_position": 0,
+            "key_bottom_sheet_container_start": false
+        },
+        flags: ["activity_new_task", "activity_clear_top"]
+    });
+    log("Root 启动指令已发送");
+} catch (e) {
+    log("启动失败，请检查 Root 权限是否授权给 Auto.js：" + e.message);
+}
+
 
 // 选中输入框并输入
 let EditTextId = matcher.getEditTextId("kb_rich_text_content_wrapper");
@@ -64,7 +86,7 @@ if (sendButton) {
 
 
 // 善后工作
-sleep(250);
+sleep(500);
 back();
 sleep(250);
 back();

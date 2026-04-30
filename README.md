@@ -16,11 +16,11 @@
 }
 ```
 
-2. 由于飞书的活动未导出，所以需要`shizuku`的支持。你需要先[ 配置shizhuku ](https://shizuku.rikka.app/zh-hans/)。
+2. 由于飞书的活动未导出，所以需要`root`的支持。
 
 > ~~当然，可以手动用无障碍模拟，只是我不是很想做~~
 
-3. 安装[AutoJS6](https://docs.autojs6.com/#/)，赋予无障碍权限和`shizuku`权限。
+3. 安装[AutoJS6](https://docs.autojs6.com/#/)，赋予无障碍权限和`root`权限。
 
 ### 脚本使用
 
