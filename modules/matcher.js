@@ -18,7 +18,7 @@ function getEditTextId(textId) {
  */
 function getWidgetById(widgetId) {
     for (let i = 0; i < 5; i++) {
-        var widget = id(widgetId).findOne(3e3);
+        var widget = id(widgetId).className("android.widget.ImageView").findOne(3e3);
         if (widget != null) {
             return widget;
         }

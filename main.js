@@ -74,10 +74,11 @@ if (EditTextId) {
 // 点击发送按钮
 console.log("文本输入完成，准备发送...");
 sleep(50); // 等待输入稳定
-let sendButton = matcher.getWidgetById("right_insets");
-
+let sendButton = matcher.getWidgetById("btn_send");
 if (sendButton) {
-    click(sendButton.bounds().centerX(), sendButton.bounds().centerY());
+    sendButton.click();
+    sleep(50);
+    console.log("已点击发送");
 } else {
     console.error("未找到发送按钮，无法继续执行。");
     exit();
