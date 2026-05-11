@@ -96,5 +96,5 @@ back();
 
 if (!screenStatus) {
     console.log("恢复屏幕状态...");
-    shizuku("input keyevent 26"); // 锁屏
+    Power();
 }
